@@ -1,0 +1,22 @@
+/*
+Theme Name: Claremont Books 
+Author: Bruce Yan
+Version: 1.0
+License: Private
+Tags: claremont books, 5c books
+*/
+
+body {
+	font: 12pt/1.4em Arial, Helvetica, sans-serif;
+	color: #444444;
+}
+
+table, th, td {
+	border: 1px solid #cccccc;
+	border-collapse: collapse;
+}
+
+table.booklistings {
+	width: 600px; 
+	text-align: center;
+}
