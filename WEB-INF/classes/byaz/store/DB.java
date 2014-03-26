@@ -1,3 +1,4 @@
+package byaz.store;
 import java.sql.*;
 
 
@@ -26,6 +27,7 @@ public class DB {
             ("jdbc:mysql://localhost:3306/byazps5", // db name
 	     "grader",      // user name
 	     "allowme");     // password
-    }
+
+}
 
 }
