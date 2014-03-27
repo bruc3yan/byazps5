@@ -4,31 +4,31 @@
   "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
 
-<!-- Part a) -->
+
   <servlet>
     <servlet-name>FindPriceAndPrint</servlet-name>
     <servlet-class>byaz.store.FindPriceAndPrint</servlet-class>
   </servlet>
   
-<!-- Part b) -->
+
   <servlet>
     <servlet-name>FindLaptopWithMinimumSpecs</servlet-name>
     <servlet-class>byaz.store.FindLaptopWithMinimumSpecs</servlet-class>
   </servlet>
 
-<!-- Part c) -->
+
   <servlet>
     <servlet-name>DisplaySpecsByManufacturer</servlet-name>
     <servlet-class>byaz.store.DisplaySpecsByManufacturer</servlet-class>
   </servlet>
   
-<!-- Part d) -->
+
   <servlet>
     <servlet-name>FindPCAndPrinterByBudget</servlet-name>
     <servlet-class>byaz.store.FindPCAndPrinterByBudget</servlet-class>
   </servlet>
 
-<!-- Part e) -->
+
   <servlet>
     <servlet-name>InsertSpecsIntoDatabase</servlet-name>
     <servlet-class>byaz.store.InsertSpecsIntoDatabase</servlet-class>

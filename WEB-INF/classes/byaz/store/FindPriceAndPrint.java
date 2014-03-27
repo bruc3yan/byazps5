@@ -1,4 +1,3 @@
-// Servlet handling http://localhost:8080/ski/index.html
 
 package byaz.store;
 
