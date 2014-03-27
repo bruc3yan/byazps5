@@ -47,7 +47,8 @@ public class FindPriceAndPrint extends HttpServlet {
 	    Statement statement = connection.createStatement();
       
 	    // Compose the SQL query
-	    String query = "SELECT maker, model, speed, price FROM PCs pc Products pd, WHERE pc.model = pd.model, GROUP BY price";
+	    //String query = "SELECT maker, model, speed, price FROM PCs pc Products pd, WHERE pc.model = pd.model, GROUP BY price";
+      	String query = "SELECT maker, pc.model, speed, price FROM PCs pc, Products pd WHERE pc.model = pd.model GROUP BY pc.price;";
       
 	    // Send query to database and receive result
 	    ResultSet resultSet = statement.executeQuery(query);
