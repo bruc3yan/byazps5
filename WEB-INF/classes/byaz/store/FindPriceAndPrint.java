@@ -15,7 +15,6 @@ public class FindPriceAndPrint extends HttpServlet {
 		      HttpServletResponse response)
 	throws ServletException, IOException {
 
-
 	// Set up the response
 	response.setContentType("text/html");
 
@@ -23,23 +22,24 @@ public class FindPriceAndPrint extends HttpServlet {
 	PrintWriter out = response.getWriter();
 	String docType =
 	    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">\n";
-	String title = "Online Store Order Page";
+	String title = "PCs Price Check";
 	out.println(docType +
-		    "<HTML>\n" +
-		    "<HEAD><TITLE>" + title + "</TITLE></HEAD>\n" +
-		    "<BODY>\n" +
-		    "<H1 ALIGN=\"CENTER\">" + title + "</H1>");
-	out.println("<P>\n" +
-		    "Please choose from among these items:");
-	out.println("<P><CENTER><TABLE>");
-	out.println("<TR><TH>Item</TH><TH>Price</TH></TR>");
+		    "<html>\n" +
+		    "<head><title>" + title + "</TITLE></head>\n" +
+		    "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"style.css\" />\n" +
+		    "<body>\n" +
+		    "<h1>" + title + "</h1>");
+	out.println("<p>\n" +
+		    "PCs that matched your price of: $" + request.getParameter("price") + 
+			"</p>\n");
+
+	// Set up the table
+	out.println("<table>");
+	out.println("<tr><th>Maker</th><th>Model</th><th>Speed</th><th>Price</th></tr>");
 	
 
-
-
-//Make a connection
+	//Make a connection
 	try {
-
 	    // Establish network connection to database
 	    Connection connection = DB.openConnection();
 	    
@@ -47,20 +47,24 @@ public class FindPriceAndPrint extends HttpServlet {
 	    Statement statement = connection.createStatement();
       
 	    // Compose the SQL query
-	    //String query = "SELECT maker, model, speed, price FROM PCs pc Products pd, WHERE pc.model = pd.model, GROUP BY price";
-      	String query = "SELECT maker, pc.model, speed, price FROM PCs pc, Products pd WHERE pc.model = pd.model GROUP BY pc.price;";
-      
+	    // Original version
+	    	//String query = "SELECT maker, pc.model, speed, price FROM PCs pc, Products pd WHERE pc.model = pd.model GROUP BY pc.price;";
+      	// Complicate version that doesn't do much
+			//(SELECT maker, pd.model, speed, price FROM PCs pc, Products pd WHERE pc.model = pd.model AND price >= 1501 ORDER BY price LIMIT 3) UNION ALL (SELECT maker, pd.model, speed, price FROM PCs pc, Products pd WHERE pc.model = pd.model AND price < 1501 ORDER BY price DESC LIMIT 3);
+      	// !!! New version !!!
+      	String query = "(SELECT maker, pd.model, speed, price FROM PCs pc, Products pd WHERE pc.model = pd.model ORDER BY ABS(price-" + request.getParameter("price") + ") ASC LIMIT 1)";
+
 	    // Send query to database and receive result
 	    ResultSet resultSet = statement.executeQuery(query);
       
 	    // Compose the rows.
 	    while (resultSet.next()) {
-		out.println("<TR>");
-		out.println("<TD>" + resultSet.getString("maker") + "</TD>");
-		out.println("<TD>" + resultSet.getInt("model") + "</TD>");
-		out.println("<TD>" + resultSet.getDouble("speed") + "GHz" + "</TD>");
-		out.println("<TD>" + "$" + resultSet.getDouble("price") + "</TD>");
-		out.println("</TR>");
+		out.println("<tr>");
+		out.println("<td>" + resultSet.getString("maker") + "</td>");
+		out.println("<td>" + resultSet.getInt("model") + "</td>");
+		out.println("<td>" + resultSet.getDouble("speed") + "GHz" + "</td>");
+		out.println("<td>" + "$" + resultSet.getDouble("price") + "</td>");
+		out.println("</tr>");
 	    }
 	    connection.close();
 	}
@@ -69,11 +73,12 @@ public class FindPriceAndPrint extends HttpServlet {
 	}
 
 
-	out.println("</TABLE></CENTER>");
-	out.println("<P><A HREF=\"cart\">View shopping cart</A>");
-	out.println("</BODY></HTML>");
-    
+	out.println("</table>");
+	// End of the table of results
 
+	out.println("<p><a href=\"index.html\">Return to previous page</a></p>");
+	out.println("</body></html>");
+    
 
 
 	// PrintWriter output;
