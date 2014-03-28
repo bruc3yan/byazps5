@@ -16,6 +16,23 @@ As for the user interface, the result page should have a link back to the page a
   <input type="submit" name="submit" value="submit">
 </form>
 
+<!--  Your application should have a page that asks the user for minimum values of the speed, RAM, hard-disk size, and screen size that s/he will accept. Find all the laptops that satisfy these requirements. Display their specifications (all attributes of Laptops) and their manufacturer. Again a similar way of repeating as in part (a). -->
+<h3> What's the minimum spec requirements? </h3>
+<form action="/byazps5/FindLaptopWithMinimumSpecs">
+	Speed:  <input type="text" name="speed" value="0" /><br />
+	RAM:  <input type="text" name="ram" value="0" /><br />
+	Hard-disk size:  <input type="text" name="hds" value="0" /><br />
+	Screen size:  <input type="text" name="screen" value="0" /><br />
+  <input type="submit" name="submit" value="submit">
+</form>
+
+<!-- Your application should have a page that asks the user for a manufacturer. Display the specifications of all products by that manufacturer. That is, display the model number, product-type, and all the attributes of whichever relation is appropriate for that type. Again a similar way of repeating as in part (a). -->
+<h3> What's the desired manufacturer? </h3>
+<form action="/byazps5/DisplaySpecsByManufacturer">
+	Desired Manufacturer:  <input type="text" name="maker" value="0" /><br />
+  <input type="submit" name="submit" value="submit">
+</form>
+
 
 </body>
 </html>
