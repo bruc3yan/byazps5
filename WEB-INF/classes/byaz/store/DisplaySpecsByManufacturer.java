@@ -4,7 +4,7 @@
  * Author: Bruce Yan, Angela Zhou
  * E-mail: byan@hmc.edu, azhou@hmc.edu
  * 
- * Finds the PC that matches the input price the closest
+ * Displays the specs by input manufacturer
  * 
  */
 
@@ -31,14 +31,13 @@ public class DisplaySpecsByManufacturer extends HttpServlet {
 	PrintWriter out = response.getWriter();
 	String docType =
 	    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">\n";
-	String title = "PCs Price Check";
+	String title = "Display specifications by Manufacturer";
 	out.println(docType +
 		    "<html>\n" +
-		    "<head><title>" + title + "</TITLE></head>\n" +
+		    "<head><title>" + title + "</title></head>\n" +
 		    "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"style.css\" />\n" +
 		    "<body>\n" +
 		    "<h1>" + title + "</h1>");
-	//out.println("<p>\n" + "PCs that matched your minimum requirement: <br />Speed: " + request.getParameter("speed") + "<br />RAM: " + request.getParameter("ram") + "<br />HDD size: " + request.getParameter("hds") + "<br />Screen: " + request.getParameter("screen") + "</p>\n");
 
 	// Initiate a DB connection
 	try {
@@ -49,11 +48,6 @@ public class DisplaySpecsByManufacturer extends HttpServlet {
 	    Statement statement = connection.createStatement();
       
 	    // Compose the SQL query
-	    // Original version
-	    	//String query = "SELECT maker, pc.model, speed, price FROM PCs pc, Products pd WHERE pc.model = pd.model GROUP BY pc.price;";
-      	// Complicate version that doesn't do much
-			//(SELECT maker, pd.model, speed, price FROM PCs pc, Products pd WHERE pc.model = pd.model AND price >= 1501 ORDER BY price LIMIT 3) UNION ALL (SELECT maker, pd.model, speed, price FROM PCs pc, Products pd WHERE pc.model = pd.model AND price < 1501 ORDER BY price DESC LIMIT 3);
-      	// !!! New version !!!
 
       	// ******************* TABLE FOR LAPTOPS ******************* //
       	out.println(" <p>\n"+ "Qualified laptops are: <br />");

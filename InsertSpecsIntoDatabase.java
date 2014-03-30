@@ -1,5 +1,5 @@
 /*
- * CS 133: Problem set 5 - FindPriceAndPrint.java
+ * CS 133: Problem set 5 - InsertSpecsIntoDatabase.java
  * 
  * Author: Bruce Yan, Angela Zhou
  * E-mail: byan@hmc.edu, azhou@hmc.edu
@@ -17,7 +17,7 @@ import javax.servlet.http.*;
 import coreservlets.*;
 import java.sql.*;
 
-public class FindPriceAndPrint extends HttpServlet {
+public class InsertSpecsIntoDatabase extends HttpServlet {
 
 
     public void doGet(HttpServletRequest request,
@@ -38,7 +38,6 @@ public class FindPriceAndPrint extends HttpServlet {
 		    "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"style.css\" />\n" +
 		    "<body>\n" +
 		    "<h1>" + title + "</h1>");
-	out.println("<p>\n" + "PCs that matched your price of: $" + request.getParameter("price") +  "</p>\n");
 
 	// Initiate a DB connection
 	try {
@@ -47,30 +46,55 @@ public class FindPriceAndPrint extends HttpServlet {
 	    
 	    // Create a statement for executing the query
 	    Statement statement = connection.createStatement();
-      
-	    // Compose the SQL query
-      	String query = "(SELECT maker, pd.model, speed, price FROM PCs pc, Products pd WHERE pc.model = pd.model ORDER BY ABS(price-" + request.getParameter("price") + ") ASC LIMIT 1)";
+      	
+      	// out.println(" <p>\n"+ "Qualified PCs and Printers that meet the following budget: <br />" + 
+      	// 	"Budget: $" + request.getParameter("budget") + "<br />" +
+      	// 	"Minimum PC speed: " + request.getParameter("minspeed") + "GHz <br />");
+      	
+      	//Check if model number already exists
+      	String query = "SELECT model FROM Products pc WHERE pc.model = " + request.getParameter("newmodel") + ";";
 
+      	ResultSet resultSet = statement.executeQuery(query);
+
+
+      	/*
+      	// If model number does not exist in the database, then we add it
+      	if (resultSet.getInt("model") == NULL) 
+      	{	
+      		// Set up the query and then execute it
+      		String queryPC = "INSERT INTO PCs VALUES (" + request.getParameter("newmodel") + ", " + request.getParameter("newspeed") + ", " + request.getParameter("newram") + ", " + request.getParameter("newhd") + ", " + request.getParameter("newprice") + ") ;"
+      		String queryProduct = "INSERT INTO Products VALUES ("+ request.getParameter("newmodel") +", "+ request.getParameter("newmaker") +", PC);"
+
+      		// Execute it
+      		String executePC = statement.executeQuery(queryPC);
+      		String executeProduct = statement.executeQuery(queryProduct);
+      	}
+      	// Otherwise, output an error message
+      	else {
+      		out.println("<h4>This model number already exists in the database!</h4>");
+      	}
+      	*/
+
+      	/*
 	    // Send query to database and receive result
 	    ResultSet resultSet = statement.executeQuery(query);
-      	
+      	*/
+
+	    /*
 		// Set up the table
 		out.println("<table>");
-		out.println("<tr><th>Maker</th><th>Model</th><th>Speed</th><th>Price</th></tr>");
+		out.println("<tr><th>PC Model</th></tr>");
 
 	    // Compose the rows.
 	    while (resultSet.next()) {
 		out.println("<tr>");
-		out.println("<td>" + resultSet.getString("maker") + "</td>");
-		out.println("<td>" + resultSet.getInt("pd.model") + "</td>");
-		out.println("<td>" + resultSet.getDouble("speed") + "GHz" + "</td>");
-		out.println("<td>" + "$" + resultSet.getDouble("price") + "</td>");
+		out.println("<td>" + resultSet.getString("pc.model") + "</td>");
 		out.println("</tr>");
 	    }
 
 	    // End of the table of results
 		out.println("</table>");
-
+		*/
 	    // Close DB connection
 	    connection.close();
 	}
