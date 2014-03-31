@@ -26,3 +26,11 @@ Please note, we are also assuming the following per Professor Lee:
 1. Our program does not handle error handling (i.e. blank input values) and thus
     our grader needs to be aware that we assume users of our program are nice
     individuals and will only input valid values.
+
+
+Versions of our machines: 
+Mac OS X 10.8 and 10.9
+We are NOT using Eclipse
+
+If the tarball is corrupted, you may grab a fresh copy from here:
+    http://cs.hmc.edu/~byan/byazps5.tgz
