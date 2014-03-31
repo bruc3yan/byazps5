@@ -19,7 +19,12 @@ Hello Grader, the following prerequisites are assumed about your machine:
     - Shell > tar -xzvf byazps5.tgz 
 3. The 'byazps5' folder should have extracted into the following directory:
     ../apache-tomcat-7.0.52/webapps/byazps5
-4. Ensure MySQL and Tomcat is running on your system and head to
+4. Open up Terminal and run mysql by typing
+    - Navigate to the directory that ’ps5.sql’ is located 
+    - Shell > sudo /usr/local/mysql/bin/mysql
+    - mysql > source ps5.sql
+    - mysql > quit;
+5. Ensure MySQL and Tomcat is running on your system and head to
     - http://localhost:8080/byazps5
 
 Please note, we are also assuming the following per Professor Lee:
