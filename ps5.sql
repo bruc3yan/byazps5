@@ -3,6 +3,8 @@
  * 
  * Authors: Bruce Yan, Angela Zhou
  * E-mail: byan@hmc.edu, azhou@hmc.edu
+ * 
+ * Run this first! It will auto-populate the database with preset data
  *
 */
 

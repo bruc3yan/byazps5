@@ -1,10 +1,13 @@
 /*
-Theme Name: Claremont Books 
-Author: Bruce Yan
-Version: 1.0
-License: Private
-Tags: claremont books, 5c books
-*/
+ * CS 133: Problem set 5 - style.css
+ * 
+ * Author: Bruce Yan, Angela Zhou
+ * E-mail: byan@hmc.edu, azhou@hmc.edu
+ * 
+ * Makes the default style look better
+ * 
+ */
+
 
 body {
 	font: 12pt/1.4em Arial, Helvetica, sans-serif;
