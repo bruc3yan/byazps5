@@ -34,3 +34,7 @@ We are NOT using Eclipse
 
 If the tarball is corrupted, you may grab a fresh copy from here:
     http://cs.hmc.edu/~byan/byazps5.tgz
+
+Additionally, our entire project is accessible on github, if that is more 
+preferred:
+    https://github.com/bruc3yan/byazps5.git
